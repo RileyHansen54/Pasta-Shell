@@ -1,0 +1,1 @@
+"This is a test to demonstrate pipe functionality in PASTA shell" && cat testfile.txt tr '[:lower:]' '[:upper:]' grep 'DEMONSTRATE' awk '{print $2, $3}'

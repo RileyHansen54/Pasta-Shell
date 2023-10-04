@@ -1,0 +1,143 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <fcntl.h>
+#include <errno.h>
+#define MAX_CMD_LENGTH 4096
+#define MAX_ARGS 64
+#define MAX_COMMANDS 10
+#include "pastap.h"
+
+/*
+typedef struct {
+    char *command;
+    char **arguments;
+    char *input_file;
+    char *output_file;
+    int pipe_flag;
+} Command;
+*/
+/*
+void parser(char *input, Command *cmd) {
+    char *token = strtok(input, " \t\n");
+    int index = 0;
+    //PARSER!!
+    //takes in command structure and string input
+    while (token) {
+        if (strcmp(token, "<") == 0) {
+            token = strtok(NULL, " \t\n");
+            cmd->input_file = token;
+        }
+	else if (strcmp(token, ">") == 0){
+            token = strtok(NULL, " \t\n");
+            cmd->output_file = token;
+        }
+	else if (strcmp(token, ">>") == 0) {
+            token = strtok(NULL, " \t\n");
+            cmd->output_file = token;
+            cmd->append_flag = 1;
+	}
+	else if (strcmp(token, "|") == 0) {
+            cmd->pipe_flag = 1;
+        }
+
+	else {
+            if (cmd->command == NULL) {
+                cmd->command = token;
+            }
+            cmd->arguments[index++] = token;
+        }
+        token = strtok(NULL, " \t\n");
+    }
+
+    cmd->arguments[index] = NULL;
+}
+
+*/
+void parser(char *input, Command *cmd) {
+    char *token = strtok(input, " \t\n");
+    int index = 0;
+    int command_index = 0;
+    cmd->num_commands = 1;
+
+    while (token) {
+        if (strcmp(token, "<") == 0) {
+            token = strtok(NULL, " \t\n");
+            cmd->input_file = token;
+        }
+        else if (strcmp(token, ">") == 0) {
+            token = strtok(NULL, " \t\n");
+            cmd->output_file = token;
+        }
+        else if (strcmp(token, ">>") == 0) {
+            token = strtok(NULL, " \t\n");
+            cmd->output_file = token;
+            cmd->append_flag = 1;
+        }
+        else if (strcmp(token, "|") == 0) {
+            cmd->commands[command_index].arguments[index] = NULL;
+            command_index++;
+            cmd->num_commands++;
+            index = 0;
+        }
+        else {
+            if (cmd->commands[command_index].command == NULL) {
+                cmd->commands[command_index].command = token;
+            }
+            cmd->commands[command_index].arguments[index++] = token;
+        }
+        token = strtok(NULL, " \t\n");
+    }
+
+    cmd->commands[command_index].arguments[index] = NULL;
+}
+
+
+
+//the token stores arguments if it is an argument stores it into the argument array in the command structure.
+
+
+//checks if its a built in command
+int is_builtin_command(Single *cmd) {
+    if (strcmp(cmd->command, "cd") == 0 ||
+        strcmp(cmd->command, "pwd") == 0 ||
+        strcmp(cmd->command, "exit") == 0 ||
+        strcmp(cmd->command, "help") == 0) {
+        return 1;
+    }
+    return 0;
+}
+//executes builtin command
+void execute_builtin_command(Single *cmd) {
+    if (strcmp(cmd->command, "cd") == 0) {
+        if (cmd->arguments[1] == NULL) {
+            cmd->arguments[1] = getenv("HOME");
+        }
+        if (chdir(cmd->arguments[1]) != 0) {
+            perror("chdir");
+        }
+    } else if (strcmp(cmd->command, "pwd") == 0) {
+        char cwd[MAX_CMD_LENGTH];
+        if (getcwd(cwd, sizeof(cwd)) != NULL) {
+            printf("%s\n", cwd);
+        } else {
+            perror("getcwd");
+        }
+    } else if (strcmp(cmd->command, "exit") == 0) {
+        printf("\ngoodbye\n");
+        exit(EXIT_SUCCESS);
+    } else if (strcmp(cmd->command, "help") == 0) {
+        printf("built-in commands:\n");
+        printf("cd [dir path]   Change the current directory\n");
+        printf("pwd             Print the current working directory\n");
+        printf("exit            Exit Pasta :c\n");
+        printf("help            Display help info\n");
+    }
+}
+
+
+

@@ -1,0 +1,44 @@
+14-HW05:
+total 292
+-rwxr-xr-x. 1 myid 10112 Apr 27 23:45 00_execvp_example
+-rw-r--r--. 1 myid   607 Apr 23 20:35 00_execvp_example.c
+-rw-r--r--. 1 myid  4832 Apr 27 23:45 00_execvp_example.o
+-rwxr-xr-x. 1 myid 10432 Apr 27 23:45 00_fork_dup_pipe_exec
+-rw-r--r--. 1 myid  2479 Apr 23 20:35 00_fork_dup_pipe_exec.c
+-rw-r--r--. 1 myid  5640 Apr 27 23:45 00_fork_dup_pipe_exec.o
+-rw-r--r--. 1 myid   800 Apr 23 20:35 00_output.txt
+-rw-r--r--. 1 myid 25579 Apr 23 20:35 00_z_answer.jok.txt
+-rwxr-xr-x. 1 myid  8208 Apr 27 23:53 a.out
+-rw-r--r--. 1 myid     0 Apr 27 22:21 cat
+-rw-r--r--. 1 myid  5283 Apr 28 17:26 exp.c
+-rw-r--r--. 1 myid  6619 Apr 27 23:25 exp.c~
+-rw-r--r--. 1 myid   101 Apr 28 17:30 exp.h
+-rw-r--r--. 1 myid   159 Apr 28 17:28 exp.h~
+-rw-r--r--. 1 myid  7736 Apr 28 17:38 exp.o
+-rw-r--r--. 1 myid   844 Apr 28 17:45 files.txt
+-rw-r--r--. 1 myid   378 Apr 27 23:52 hello.c
+-rw-r--r--. 1 myid   366 Apr 27 23:12 hello.c~
+-rw-r--r--. 1 myid     0 Apr 27 21:59 ls
+-rw-r--r--. 1 myid  1166 Apr 27 20:51 Makefile
+-rw-r--r--. 1 myid     0 Apr 28 17:44 output.txt
+-rw-r--r--. 1 myid  7461 Apr 23 20:35 parse.c
+-rw-r--r--. 1 myid   758 Apr 23 20:35 parse.h
+-rw-r--r--. 1 myid 15272 Apr 27 23:45 parse.o
+-rwxr-xr-x. 1 myid 20672 Apr 28 17:38 pasta
+-rw-r--r--. 1 myid  1338 Apr 28 17:38 pasta.c
+-rw-r--r--. 1 myid  1386 Apr 28 17:38 pasta.c~
+-rw-r--r--. 1 myid  8320 Apr 28 17:38 pasta.o
+-rw-r--r--. 1 myid  3858 Apr 28 17:35 pastap.c
+-rw-r--r--. 1 myid  3872 Apr 28 17:34 pastap.c~
+-rw-r--r--. 1 myid   467 Apr 28 17:38 pastap.h
+-rw-r--r--. 1 myid   468 Apr 28 17:37 pastap.h~
+-rw-r--r--. 1 myid  8512 Apr 28 17:38 pastap.o
+-rw-r--r--. 1 myid  1784 Apr 27 23:57 rec25908
+-rw-r--r--. 1 myid     0 Apr 28 18:13 rec3133
+-rw-r--r--. 1 myid   153 Apr 27 22:56 result.txt
+-rwxr-xr-x. 1 myid 20352 Apr 27 23:45 shell
+-rw-r--r--. 1 myid  2460 Apr 23 20:35 shell.c
+-rw-r--r--. 1 myid  8792 Apr 27 23:45 shell.o
+-rw-r--r--. 1 myid   844 Apr 28 17:46 sorted.txt
+-rw-r--r--. 1 myid    58 Apr 27 21:58 unsorted.txt
+/home/myid/rrh34870/1730b/14-HW05:/home/myid/csci-1730b
